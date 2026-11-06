@@ -3,7 +3,7 @@ import json
 
 from common import CHAT_DEPLOYMENT, chat_client, format_sources, retrieve
 
-QUESTION = "Explain the difference between keyword, vector and hybrid search."
+QUESTION = "Explain the difference between api key and access token authentications."
 chunks = retrieve(QUESTION, k=3)
 SOURCES = format_sources(chunks)
 client = chat_client()
@@ -42,7 +42,6 @@ def run(label, system=GROUNDED, temperature=0.2, top_p=1.0, text_format=None, re
             print(f"Parsed keys: {list(data)}")
 
 
-# Microsoft recommends changing temperature OR top_p, not both.
 run("A. Baseline", temperature=0.2, repeat=2)
 run("B. High temperature", temperature=1.5, repeat=2)
 run("C. Low top_p", temperature=1.0, top_p=0.1, repeat=2)
